@@ -1,13 +1,27 @@
 
-# Shell Devicons
+# Devicons Shell
 
 > Show filetype glyphs (icons) in your terminal
 
 Very much an experimental work in progress, Pull requests are very welcomed.
 
-### Example
+### Examples
 
-![preview](images/preview.png)
+> Using `devicons-ls`
+
+![Equivalent using devicons 1](images/preview-devicons-1.png)
+
+> Using `ls`
+
+![Using ls 1](images/preview-ls-1.png)
+
+> Using `devicons-ls`
+
+![Equivalent using devicons 1](images/preview-devicons-1.png)
+
+> Using `ls`
+
+![Using ls 1](images/preview-ls-1.png)
 
 ### Requirements
 
