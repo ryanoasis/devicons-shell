@@ -116,8 +116,18 @@ function devicons_get_filetype_symbol {
 	return 0
 }
 
-find $1 -maxdepth 1 -type f -printf "%P\n" | while read line; do
-	 echo -en " $(devicons_get_filetype_symbol $line) \n"
+# for now wrap piped portion so uses the same 'subshell'
+# @todo fixme - dont use pipe
+find $1 -maxdepth 1 -type f -printf "%P\n" | sort | { while read line; do
+	 lines="$lines $(devicons_get_filetype_symbol $line) \n"
 done
 
-echo -en "\n"
+echo -en "$lines \n" | column -n
+}
+
+find $1 -maxdepth 1 -mindepth 1 -type d -printf "%P\n" | sort | { while read line; do
+	 lines="$lines $(devicons_get_directory_symbol $line) \n"
+done
+
+echo -en "$lines \n" | column -n
+}
