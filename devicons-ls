@@ -101,15 +101,11 @@ function devicons_get_filetype_symbol {
 	local default=
 	local exist_check=1
 	local input=$1
-	#local filename=$(basename "$input")
-	#filename="$filename"
 	local filename="$1"
 	# using ## for possibly more than one "." (get after last one):
 	local filetype="${filename##*.}"
 
-	#echo "FT $filetype"
-
-	if [ ! -z "$filetype" ] && [ ${extensions[$filetype]+abc} ]; then
+	if [ ! -z "$filetype" ] && [ ${extensions[$filetype]+$exist_check} ]; then
 		local symbol=${extensions[$filetype]}
 	else
 		local symbol=$default
