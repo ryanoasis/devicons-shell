@@ -1,5 +1,5 @@
 
-# Bash Devicons
+# Shell Devicons
 
 > Show filetype glyphs (icons) in your terminal
 
