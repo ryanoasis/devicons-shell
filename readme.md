@@ -17,11 +17,11 @@ Very much an experimental work in progress, Pull requests are very welcomed.
 
 > Using `devicons-ls`
 
-![Equivalent using devicons 1](images/preview-devicons-1.png)
+![Equivalent using devicons 2](images/preview-devicons-2.png)
 
 > Using `ls`
 
-![Using ls 1](images/preview-ls-1.png)
+![Using ls 2](images/preview-ls-2.png)
 
 ### Requirements
 
