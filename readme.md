@@ -30,7 +30,7 @@ A patched font from [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/ma
 ### Install
 
 * Just run the script or copy it to ~/bin to run from anywhere
-* Not recommended but you _could_ replace `ls` with this if you really wanted ([vim-devicons #150](https://github.com/ryanoasis/vim-devicons/issues/150))
+* Not recommended but you _could_ replace `ls` with this if you really wanted (reference [vim-devicons #150](https://github.com/ryanoasis/vim-devicons/issues/150))
   * Just copy the script to ~/bin and rename to 'ls'
 
 
