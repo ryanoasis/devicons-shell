@@ -37,6 +37,10 @@ A patched font from [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/ma
 
 * [better-ls](https://github.com/illinoisjackson/better-ls)
 
+### Resources
+
+* [Stack Exchange: Why Not Parse `ls`](http://unix.stackexchange.com/questions/128985/why-not-parse-ls)
+
 ### License
 
 [MIT](LICENSE) © Ryan L McIntyre
