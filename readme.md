@@ -29,9 +29,9 @@ A patched font from [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/ma
 
 ### Install
 
-* Run the script or copy it to ~/bin to run from anywhere
+* Run the script or copy it to `~/bin` to run from anywhere
 * Not recommended but you _could_ replace `ls` with this if you wanted (reference [vim-devicons #150](https://github.com/ryanoasis/vim-devicons/issues/150))
-  * Copy the script to ~/bin and rename to 'ls'
+  * Copy the script to `~/bin` and rename to 'ls'
 
 ### Other Implementations 
 
