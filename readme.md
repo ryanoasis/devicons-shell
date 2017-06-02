@@ -36,6 +36,7 @@ A patched font from [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/ma
 ### Other Implementations 
 
 * [better-ls](https://github.com/illinoisjackson/better-ls)
+* [even-better-ls](https://github.com/illinoisjackson/even-better-ls)
 
 ### Resources
 
