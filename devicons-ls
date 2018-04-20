@@ -122,12 +122,12 @@ find $1 -maxdepth 1 -type f -printf "%P\n" | sort | { while read line; do
 	 lines="$lines $(devicons_get_filetype_symbol $line) \n"
 done
 
-echo -en "$lines \n" | column -n
+echo -en "$lines \n" | column -s"$symbol" -t 
 }
 
 find $1 -maxdepth 1 -mindepth 1 -type d -printf "%P\n" | sort | { while read line; do
 	 lines="$lines $(devicons_get_directory_symbol $line) \n"
 done
 
-echo -en "$lines \n" | column -n
+echo -en "$lines \n" | column -s"$symbol" -t
 }
