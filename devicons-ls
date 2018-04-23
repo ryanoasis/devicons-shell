@@ -2,132 +2,160 @@
 # Author: Ryan L McIntyre
 # Project: devicons-shell
 
+declare -A colors=(
+	[dir]=159
+        [image]=225
+        [code]=085
+        [src]=078
+        [perl]=085
+        [python]=085
+        [script]=085
+        [data]=085
+        [template]=135
+        [style]=162
+        [text]=105
+        [archive]=229
+	[default]=248
+)
+
 function devicons_get_directory_symbol {
 
 	local symbol=""
+	local clr="${colors[dir]}"
 
-	echo "$symbol $1"
+	echo -e "\x1b[38;5;${clr}m${symbol} $1 \x1b[0m"
 	return 0
 }
 
 function devicons_get_filetype_symbol {
 
 	declare -A extensions=(
-		[txt]=e
-		[styl]=
-		[scss]=
-		[htm]=
-		[html]=
-		[slim]=
-		[ejs]=
-		[css]=
-		[less]=
-		[md]=
-		[markdown]=
-		[json]=
-		[js]=
-		[jsx]=
-		[rb]=
-		[php]=
-		[py]=
-		[pyc]=
-		[pyo]=
-		[pyd]=
-		[coffee]=
-		[mustache]=
-		[hbs]=
-		[conf]=
-		[ini]=
-		[yml]=
-		[bat]=
-		[jpg]=
-		[jpeg]=
-		[bmp]=
-		[png]=
-		[gif]=
-		[ico]=
-		[twig]=
-		[cpp]=
-		[c++]=
-		[cxx]=
-		[cc]=
-		[cp]=
-		[c]=
-		[hs]=
-		[lhs]=
-		[lua]=
-		[java]=
-		[sh]=
-		[fish]=
-		[ml]=λ
-		[mli]=λ
-		[diff]=
-		[db]=
-		[sql]=
-		[dump]=
-		[clj]=
-		[cljc]=
-		[cljs]=
-		[edn]=
-		[scala]=
-		[go]=
-		[dart]=
-		[xul]=
-		[sln]=
-		[suo]=
-		[pl]=
-		[pm]=
-		[t]=
-		[rss]=
-		[f#]=
-		[fsscript]=
-		[fsx]=
-		[fs]=
-		[fsi]=
-		[rs]=
-		[rlib]=
-		[d]=
-		[erl]=
-		[hrl]=
-		[vim]=
-		[ai]=
-		[psd]=
-		[psb]=
-		[ts]=
-		[jl]=
+		[txt]=e,text
+		[t]=,text
+		[markdown]=,text
+		[md]=,text
+		[rss]=,text
+		[styl]=,style
+		[scss]=,style
+		[less]=,style
+		[css]=,style
+		[htm]=,template
+		[html]=,template
+		[slim]=,code
+		[json]=,data
+		[coffee]=,src
+		[js]=,code
+		[jsx]=,code
+		[rb]=,src
+		[php]=,code
+		[py]=,python
+		[pyc]=,python
+		[pyo]=,python
+		[pyd]=,python
+		[conf]=,data
+		[ini]=,data
+		[yml]=,data
+		[bat]=,script
+		[jpg]=,image
+		[jpeg]=,image
+		[bmp]=,image
+		[png]=,image
+		[gif]=,image
+		[ico]=,image
+		[twig]=,template
+		[tt2]=,template
+		[mustache]=,template
+		[hbs]=,template
+		[ejs]=,template
+		[cpp]=,src
+		[c++]=,src
+		[cxx]=,src
+		[cc]=,src
+		[cp]=,src
+		[c]=,src
+		[xul]=,code
+		[hs]=,code
+		[lhs]=,code
+		[lua]=,code
+		[java]=,src
+		[sh]=,script
+		[fish]=,script
+		[ml]=λ,code
+		[mli]=λ,code
+		[diff]=,data
+		[db]=,data
+		[sql]=,data
+		[dump]=,data
+		[clj]=,code
+		[cljc]=,src
+		[cljs]=,src
+		[edn]=,code
+		[scala]=,src
+		[go]=,src
+		[dart]=,src
+		[sln]=,src
+		[suo]=,src
+		[pl]=,perl
+		[pm]=,perl
+		[f#]=,src
+		[fsscript]=,code
+		[fsx]=,code
+		[fs]=,code
+		[fsi]=,code
+		[rs]=,code
+		[rlib]=,data
+		[d]=,code
+		[erl]=,src
+		[hrl]=,src
+		[vim]=,code
+		[ai]=,image
+		[psd]=,image
+		[psb]=,image
+		[ts]=,image
+		[jl]=,code
+		[7z]=,archive
+		[bz]=,archive
+		[bz2]=,archive
+		[gz]=,archive
+		[tar]=,archive
+		[xz]=,archive
+		[zip]=,archive
 	)
 
 	local filetype
 	local default=
+	local symbol=$default
 	local exist_check=1
 	local input=$1
-	local filename="$1"
+	local clr="default"
+	local filename=" $1"
 	# using ## for possibly more than one "." (get after last one):
 	local filetype="${filename##*.}"
 
 	if [ ! -z "$filetype" ] && [ ${extensions[$filetype]+$exist_check} ]; then
-		local symbol=${extensions[$filetype]}
-	else
-		local symbol=$default
+		clr=${extensions[$filetype]:2}
+		symbol=${extensions[$filetype]:0:1}
 	fi
 
-	echo "$symbol $1"
+	clr="${colors[$clr]}"
+
+	echo -e "\x1b[38;5;${clr}m${symbol}$filename \x1b[0m "	
 
 	return 0
 }
 
 # for now wrap piped portion so uses the same 'subshell'
 # @todo fixme - dont use pipe
-find $1 -maxdepth 1 -type f -printf "%P\n" | sort | { while read line; do
-	 lines="$lines $(devicons_get_filetype_symbol $line) \n"
+find $1 -maxdepth 1 -mindepth 1 -type d -printf "%P \n" | sort | { while read line; do
+	lines="$lines $(devicons_get_directory_symbol $line) \n"
 done
 
-echo -en "$lines \n" | column -s"$symbol" -t 
+echo -en "$lines \n" | column
 }
 
-find $1 -maxdepth 1 -mindepth 1 -type d -printf "%P\n" | sort | { while read line; do
-	 lines="$lines $(devicons_get_directory_symbol $line) \n"
+find $1 -maxdepth 1 -type f -printf "%P\n" | sort | { while read line; do
+	lines="$lines $(devicons_get_filetype_symbol $line)\n"
 done
 
-echo -en "$lines \n" | column -s"$symbol" -t
+echo -e "$lines \n" | column -c90 
 }
