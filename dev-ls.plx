@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w
 use strict;
 use warnings;
-use Data::Dump qw/pp/;
 
 my $colorize = 1;
 my %extension = %{extensions()};
@@ -160,7 +159,7 @@ sub extensions      {
     src_hkl   => { symbol => '', set => [qw/hs lhs/]},
     src_js    => { symbol => '', set => [qw/coffee js jsm jsp jsx/]},
     src_ms    => { symbol => '', set => [qw/cc cp cs sln suo/]},
-    src_lisp  => { symbol => 'λ', set => [qw/cl lisp ml mli/]},
+    src_lisp  => { symbol => '', set => [qw/cl lisp ml mli/]},
     src_py    => { symbol => '', set => [qw/py pyc pyd pyo/]},
     src_perl  => { symbol => '', set => [qw/PL pl plx pm/]},
     sql       => { symbol => '', set => [qw/msql mysql pgsql rlib sql/]},
